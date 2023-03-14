@@ -41,6 +41,11 @@ app.get('/api/user', async (req, res) => {
   return res.status(200).json(data);
 });
 
+app.use((err, req, res, next,) => {
+  console.log(err);
+  res.status(500).json({ error: 'There was an error somewhere' });
+});
+
 // added catch
 app.use('*', (req, res) => res.sendStatus(404));
 
