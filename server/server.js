@@ -12,8 +12,10 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // creating a session instance
+
 app.use(session({
   // secret is in .env file
+  
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
@@ -23,6 +25,7 @@ app.use(session({
     secure: false,
   },
 }));
+
 
 // Todo: get request for weather type
 app.use('/auth', authRoutes);
