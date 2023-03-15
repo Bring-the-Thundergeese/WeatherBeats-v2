@@ -29,7 +29,13 @@ export default function Main() {
   useEffect(() => {
     const fetchToken = async () => {
       try {
-        const response = await fetch('/auth/token');
+        const response = await fetch('/auth/token', {
+          method: 'get',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
         const data = await response.json();
         const { accessToken } = data;
         setToken(accessToken.trim());
