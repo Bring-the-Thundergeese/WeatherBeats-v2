@@ -6,8 +6,8 @@ const authRouter = express.Router();
 
 dotenv.config();
 
-const spotifyClientId = '';
-const spotifyClientSecret = '';
+const spotifyClientId = '5b73ca8306114267b63ee7ef93d84d9a';
+const spotifyClientSecret = '0117e9fa07434a378f279e0cebcd2abf';
 const spotifyCallbackUrl = 'http://localhost:3000/auth/callback';
 
 authRouter.get('/', (req, res) => res.send('Auth Test'));
