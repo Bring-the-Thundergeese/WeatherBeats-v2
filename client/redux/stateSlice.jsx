@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  userName: 'Regina',
+  username: 'Regina',
   type: 'Rainy',
   temp: 69,
   zipcode: 10001,
@@ -27,7 +27,7 @@ const stateSlice = createSlice({
       state.playlist = action.payload;
     },
     updateUser: (state, action) =>  {
-      state.userName = action.payload;
+      state.username = action.payload;
     },
     updateType: (state, action) => {
       state.type = action.payload;

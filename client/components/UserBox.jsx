@@ -8,13 +8,10 @@ export default function UserBox({ user }) {
     <div className="column">
       <div className="box is-size-4 has-text-white is-full-height">
         <p>
-          Welcome
-          {' '}
-          Adam
+          Welcome {`${username}`}
           !
         </p>
-        <p>adam.liang@alumni.stonybrook.edu</p>
-        <button className="button is-primary is-small">Log Out</button>
+        <button type="button" className="button is-primary is-small">Log Out</button>
       </div>
     </div>
   );
