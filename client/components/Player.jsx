@@ -5,12 +5,16 @@ import Icon from './Icon';
 import { updatePlaylist } from '../redux/stateSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
+
+//token is passed down as props from Main
 function Player({ token }) {
   const dispatch = useDispatch();
 
+  //Give this component access to playlsit and (weather)type from the Store
   const playlist = useSelector((state) => state.updater.playlist);
   const weather = useSelector((state) => state.updater.type);
 
+  //Change the playlist based upon the weather pattern in state from OpenWeather API request 
   if (weather === 'rain') {
     dispatch(updatePlaylist('37i9dQZF1EIelivQWnxTte'));
   }
@@ -24,6 +28,8 @@ function Player({ token }) {
     dispatch(updatePlaylist('4raqLXnmb8WYkjfed9olAR'));
   }
 
+  //renders the Logo, Zipcode toolbar, and UserInformation on the top navbar 
+  //renders embedded Spotify Player in the Main component 
   return (
     <div>
       <div className="hero-head">
@@ -45,5 +51,4 @@ function Player({ token }) {
   );
 }
 
-// https://open.spotify.com/playlist/37i9dQZF1DX889U0CL85jj?si=491b69f1290a4f93
 export default Player;
