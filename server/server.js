@@ -1,10 +1,11 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRouter');
 const weatherRouter = require('./routes/weatherRouter');
 
-require('dotenv').config();
+dotenv.config();
 
 const app = express();
 const PORT = 3000;
