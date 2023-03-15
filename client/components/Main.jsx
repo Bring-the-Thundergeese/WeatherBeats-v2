@@ -34,7 +34,13 @@ export default function Main() {
     // TODO: for some reason, fetching the token just give an empty object. working on this later
     const fetchToken = async () => {
       try {
-        const response = await fetch('/auth/token');
+        const response = await fetch('/auth/token', {
+          method: 'get',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
         const data = await response.json();
         const { accessToken } = data;
         setToken(accessToken.trim());
