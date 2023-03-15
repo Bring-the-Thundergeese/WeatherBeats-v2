@@ -59,6 +59,7 @@
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
+    "@testing-library/react": "^14.0.0",
     "babel-jest": "^29.5.0",
     "babel-loader": "^9.1.2",
     "bulma": "^0.9.4",
@@ -66,11 +67,7 @@
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.5.0",
     "mini-css-extract-plugin": "^2.7.3",
-<<<<<<< HEAD
-    "react-test-renderer": "^18.2.0",
-=======
     "nodemon": "^2.0.21",
->>>>>>> dev
     "sass": "^1.59.2",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",

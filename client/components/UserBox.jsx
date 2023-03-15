@@ -1,8 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function UserBox({ user }) {
-  const username = useSelector((state) => state.updater.username);
 
   return (
     <div className="column">
