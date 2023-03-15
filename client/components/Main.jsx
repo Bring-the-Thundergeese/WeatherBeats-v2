@@ -8,9 +8,6 @@ import Login from './Login';
 export default function Main() {
   const dispatch = useDispatch();
   const [token, setToken] = useState('');
-  // const [userData, setUserData] = useState({});
-  // const weatherType = useSelector((state) => state.updater.type);
-  const playlist = useSelector((state) => state.updater.playlist);
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -67,7 +64,7 @@ export default function Main() {
             <div className="card-content">
               <div className="content">
                 <div className="field">
-                  {(!token) ? <Login /> : <Player token={token} playlistUri={playlist} />}
+                  {(!token) ? <Login /> : <Player token={token} />}
                 </div>
               </div>
             </div>

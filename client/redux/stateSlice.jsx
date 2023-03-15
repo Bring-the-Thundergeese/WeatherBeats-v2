@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  username: 'Regina',
-  type: 'Rainy',
-  temp: 69,
+  username: '',
+  type: '',
+  temp: 0,
   zipcode: 10001,
-  city: 'New York City',
+  city: '',
   url: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
   bg: "https://images.hdqwalls.com/wallpapers/sunny-fields.jpg",
-  playlist: '4ANPW38qMEYQ3Z1mVLrtmm',
+  playlist: '',
 };
 
 const stateSlice = createSlice({
@@ -23,10 +23,10 @@ const stateSlice = createSlice({
       state.url = action.payload.url;
       state.bg = action.payload.bg;
     },
-    updatePlaylist: (state, action) =>  {
+    updatePlaylist: (state, action) => {
       state.playlist = action.payload;
     },
-    updateUser: (state, action) =>  {
+    updateUser: (state, action) => {
       state.username = action.payload;
     },
     updateType: (state, action) => {
