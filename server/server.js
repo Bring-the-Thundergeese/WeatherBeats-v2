@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(session({
   // secret is in .env file
   
-  secret: process.env.SESSION_SECRET,
+  secret: 'secret',
   resave: false,
   saveUninitialized: true,
   cookie: {
