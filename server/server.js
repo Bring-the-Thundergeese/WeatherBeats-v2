@@ -1,6 +1,6 @@
 const express = require('express');
 const session = require('express-session');
-const path = require('path');
+// const path = require('path');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRouter');
 const weatherRouter = require('./routes/weatherRouter');
@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(session({
   // secret is in .env file
   
-  secret: 'secret',
+  secret: process.env.sessionSecret,
   resave: false,
   saveUninitialized: true,
   cookie: {
