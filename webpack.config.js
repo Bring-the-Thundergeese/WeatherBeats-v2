@@ -6,12 +6,12 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
   entry: './client/index.jsx',
   // Default to development
-  mode: process.env.NODE_ENV || 'development',
+  mode: process.env.NODE_ENV,
   output: {
     // output production to /dist (change if you want)
-    path: `${__dirname}/dist`,
+    path: path.resolve(__dirname, ('./dist')),
     publicPath: '/',
-    filename: '[name].bundle.js',
+    filename: '.bundle.js',
   },
   module: {
     rules: [
@@ -69,27 +69,17 @@ module.exports = {
     }),
   ],
   devServer: {
-    // for routing
-    // historyApiFallback: true,
-    // HMR nodemon for webpack
+    headers: { 'Allow-Control-Allow-Origin': '*' },
+    historyApiFallback: true,
+    host: 'localhost',
     hot: true,
-    liveReload: true,
-    // static files
-    static: {
-      directory: path.join(__dirname, 'public'),
-      publicPath: '/',
-    },
-    compress: true,
-    // opens window when changes happen (can be annoying beware)
-    open: true,
     port: 8080,
+    static: {
+      directory: path.join(__dirname, './dist'),
+      publicPath: '/dist',
+    },
     proxy: {
-      '/auth': {
-        target: 'http://127.0.0.1:3000/',
-      },
-      '/api': {
-        target: 'http://127.0.0.1:3000/',
-      },
+      '/': 'http://localhost:3000/',
     },
   },
 };

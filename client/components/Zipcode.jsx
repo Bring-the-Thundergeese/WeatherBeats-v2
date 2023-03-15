@@ -15,6 +15,7 @@ export default function Zipcode() {
   useEffect(() => {
     // on-load, fetch weather data from the weather API
     async function getWeatherData(input) {
+      // console.log('testests');
       const body = JSON.stringify({ zip: input });
       console.log('This is the body:', body);
       const response = await fetch('/api/weather', {
