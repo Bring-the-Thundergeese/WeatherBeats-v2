@@ -1,30 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updatePlaylist } from '../redux/stateSlice';
+import { updatePlaylist, updateUser } from '../redux/stateSlice';
 import Logo from '../../public/logo.png';
 import Player from './Player';
 import Login from './Login';
 
 export default function Main() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [token, setToken] = useState('');
-  const [userData, setUserData] = useState({});
-  // const [playlist, setPlaylist] = useState('4ANPW38qMEYQ3Z1mVLrtmm');
-  const weatherType = useSelector((state) => state.updater.type);
-  const playlist = useSelector((state) => state.updater.playlist);
-
-  // This functionality is currently broken
-  // function changePlaylist(type) {
-  //   if (type === 'clouds') {
-  //     return dispatch(updatePlaylist('37i9dQZF1EIfv2exTKzl3M'));
-  //   }
-  //   if (type === 'clear') {
-  //     return dispatch(updatePlaylist('6VCXXQSDMXLYaHNaWPx11S'));
-  //   }
-  //   if (type === 'rain') {
-  //     return dispatch(updatePlaylist('4ANPW38qMEYQ3Z1mVLrtmm'));
-  //   }
-  // }
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -50,7 +33,9 @@ export default function Main() {
       try {
         const response = await fetch('/api/user');
         const data = await response.json();
-        setUserData(data);
+        console.log('This is the User Data that we need!', data.display_name);
+        const name = data.display_name;
+        dispatch(updateUser(name));
       } catch (error) {
         console.error('User data fetch error: ', error);
       }
@@ -79,7 +64,7 @@ export default function Main() {
             <div className="card-content">
               <div className="content">
                 <div className="field">
-                  { (!token) ? <Login /> : <Player token={token} playlistUri={playlist} /> }
+                  {(!token) ? <Login /> : <Player token={token} />}
                 </div>
               </div>
             </div>
