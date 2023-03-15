@@ -7,7 +7,7 @@ function App() {
   const [token, setToken] = useState('');
   const [userData, setUserData] = useState({});
 
-  // useeffect will fetch the data.
+  // useeffect will fetch the token data.
   useEffect(() => {
     // right now the token just fetches from the server sessions
     // TODO: have the token refresh if it is expired (include timestamp in session)
