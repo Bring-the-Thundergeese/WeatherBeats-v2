@@ -3,6 +3,7 @@ const weatherController = {};
 
 const API_KEY = 'dead5c9b084e896a899ac3479c1d786c';
 
+
 weatherController.getData = async (req, res, next) => {
   console.log('Inside get weather middleware');
   console.log('this is the req.body', req.body);
