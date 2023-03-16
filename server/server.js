@@ -1,10 +1,11 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRouter');
 const weatherRouter = require('./routes/weatherRouter');
 
-require('dotenv').config();
+dotenv.config();
 
 const app = express();
 const PORT = 3000;
@@ -12,9 +13,10 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // creating a session instance
+
 app.use(session({
   // secret is in .env file
-  secret: process.env.SESSION_SECRET,
+  secret: 'secret',
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -24,9 +26,14 @@ app.use(session({
   },
 }));
 
+
 // Todo: get request for weather type
 app.use('/auth', authRoutes);
 app.use('/weather', weatherRouter);
+
+app.get('/test', (req, res) => {
+  res.status(200).json({test: 'you did it!'})
+})
 
 app.get('/api/user', async (req, res) => {
   if (!req.session.user) {
@@ -39,6 +46,11 @@ app.get('/api/user', async (req, res) => {
     href,
   };
   return res.status(200).json(data);
+});
+
+app.use((err, req, res, next,) => {
+  console.log(err);
+  res.status(500).json({ error: 'There was an error somewhere' });
 });
 
 // added catch
