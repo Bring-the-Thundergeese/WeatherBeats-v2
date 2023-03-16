@@ -2,7 +2,7 @@ import React from 'react';
 import UserBox from './UserBox';
 import Zipcode from './Zipcode';
 import Icon from './Icon';
-import { updatePlaylist } from '../redux/stateSlice';
+import { updatePlaylist, updateType } from '../redux/stateSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 
@@ -26,6 +26,9 @@ function Player({ token }) {
   }
   else if (weather === 'snow') {
     dispatch(updatePlaylist('4raqLXnmb8WYkjfed9olAR'));
+  }
+  else if (weather === 'mist') {
+    dispatch(updatePlaylist('6sHd5BU0W8bgvHcYAGflFO'))
   }
 
   //renders the Logo, Zipcode toolbar, and UserInformation on the top navbar 

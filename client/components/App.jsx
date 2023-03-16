@@ -6,6 +6,7 @@ import Login from './Login';
 
 export default function App() {
   const [token, setToken] = useState('');
+  const type = useSelector((state) => state.updater.type)
 
   useEffect(() => {
     async function getToken() {
@@ -18,7 +19,7 @@ export default function App() {
   }, []);
 
   return (
-    <section id="app" className="hero is-fullheight">
+    <section id="app" className={`hero is-fullheight ${type}`}>
       <Main />
     </section>
   );

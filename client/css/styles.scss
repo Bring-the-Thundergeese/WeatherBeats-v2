@@ -2,12 +2,29 @@
 @import "node_modules/bulma/bulma.sass";
 
 #app {
-  background-image: url('https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80');
   background-size: cover;
   // background-size: 100vw;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+}
+.clouds {
+  background-image: url('https://thumbs.gfycat.com/EmotionalOnlyGoldfinch-size_restricted.gif');
+}
+.rain {
+  background-image: url('https://gray-wtoc-prod.cdn.arcpublishing.com/resizer/LXxPGI3EaFzsfTKTgJ0Ngd528L4=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/SZRS43TDQFAK5JCUUTXZJHV5MQ.gif');
+}
+.clear {
+  background-image: url('https://i.pinimg.com/originals/1b/db/fa/1bdbfa09a2b20fc92fb035ccd963df0e.gif');
+}
+.snow {
+  background-image: url('https://www.emailbackgrounds.com/files/winter/65/bottom.gif');
+}
+.mist {
+  background-image: url('https://i.pinimg.com/originals/c9/cb/54/c9cb548175f77a81fac2523a68f3d781.gif');
+}
+.nothing {
+  background-image: url('https://i.pinimg.com/originals/25/07/0e/25070ee351300c7e70499f18a727875a.gif');
 }
 
 // .topGrid  {

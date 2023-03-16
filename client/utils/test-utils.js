@@ -45,7 +45,18 @@ import { Provider } from 'react-redux'
 import stateSlice from '../redux/stateSlice'
 
 export function renderWithProviders(ui, {
-  preloadedState = {},
+  preloadedState = {
+    username: '',
+    type: 'nothing',
+    temp: 0,
+    zipcode: 10001,
+    city: '',
+    url: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
+    bg: "https://images.hdqwalls.com/wallpapers/sunny-fields.jpg",
+    playlist: '',
+    token: '',
+    access: false,
+  },
   // default param for no store passed in (with stateSliceReducer passed in)
   store = configureStore({reducer: { state: stateSliceReducer }, preloadedState}),
   ...renderOptions

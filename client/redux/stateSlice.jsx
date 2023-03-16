@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   username: '',
-  type: '',
+  type: 'nothing',
   temp: 0,
   zipcode: 10001,
   city: '',
@@ -32,7 +32,6 @@ const stateSlice = createSlice({
       state.username = action.payload;
     },
     updateToken: (state, action) => {
-      console.log("Changing your token's value");
       state.token = action.payload;
     },
     updateAccess: (state, action) => {

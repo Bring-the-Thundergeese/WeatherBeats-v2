@@ -1,15 +1,17 @@
-import reducer, { updateType, updateTemp, updateZipcode, updateCity, updateUrl, updateAll, updateUser, updatePlaylist } from '../redux/stateSlice'
+import reducer, { updateType, updateTemp, updateZipcode, updateCity, updateUrl, updateAll, updateUser, updatePlaylist, updateToken, updateAccess } from '../redux/stateSlice'
 
 test('it should return the intiial state', () => {
   expect(reducer(undefined, {type: undefined})).toEqual({
     username: '',
-    type: '',
-    temp: 0,
-    zipcode: 10001,
-    city: '',
-    url: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
-    bg: 'https://images.hdqwalls.com/wallpapers/sunny-fields.jpg',
-    playlist: '4ANPW38qMEYQ3Z1mVLrtmm',
+  type: 'nothing',
+  temp: 0,
+  zipcode: 10001,
+  city: '',
+  url: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
+  bg: "https://images.hdqwalls.com/wallpapers/sunny-fields.jpg",
+  playlist: '',
+  token: '',
+  access: false,
   })
 });
 
@@ -84,3 +86,16 @@ test('updateUrl should update url', () => {
   const previousState = {url: 'https://images.unsplash.com/photo-iswearthisisarealphoto1000and1percentsure'}
   expect(reducer(previousState, updateUrl('https://media.tenor.com/8YtBJxaqbFYAAAAM/success-successful.gif'))).toEqual({url: 'https://media.tenor.com/8YtBJxaqbFYAAAAM/success-successful.gif'})
 })
+
+// updateAccess -> updates access
+test('updateAccess should update access', () => {
+  const previousState = {access: false}
+  expect(reducer(previousState, updateAccess(true))).toEqual({access: true})
+})
+
+// updateToken -> updates token
+test('updateToken should update token', () => {
+  const previousState = {token: ''}
+  expect(reducer(previousState, updateToken('1234'))).toEqual({token: '1234'})
+})
+
