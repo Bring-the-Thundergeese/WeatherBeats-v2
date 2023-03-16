@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { updatePlaylist, updateUser } from '../redux/stateSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser, updateToken, updateAccess } from '../redux/stateSlice';
 import Logo from '../../public/logo.png';
 import Player from './Player';
 import Login from './Login';
 
 export default function Main() {
   const dispatch = useDispatch();
+
+  let access = useSelector((state) => state.updater.access);
+
   const [token, setToken] = useState('');
 
   useEffect(() => {
@@ -22,6 +25,9 @@ export default function Main() {
         const data = await response.json();
         const { accessToken } = data;
         setToken(accessToken.trim());
+        dispatch(updateToken(token));
+        dispatch(updateAccess(true));
+        // dispatch(updateAccess(true))
       } catch (error) {
         console.error('Token fetch error: ', error);
       }
@@ -45,18 +51,11 @@ export default function Main() {
 
     // set playlist based on weather type
     // changePlaylist(weatherType);
-  }, [token]);
+  }, []);
 
+  //Login Page and Main Page components are swapped when the access variable changes in state 
   return (
-    <>
-      {/* Moving this to Player to Swap Components <div className="hero-head">
-        <div className="columns">
-          <Icon />
-          <Zipcode />
-          <UserBox />
-        </div>
-      </div> */}
-
+    <div>
       <div className="hero-body">
         <div className="container has-text-centered">
 
@@ -64,7 +63,8 @@ export default function Main() {
             <div className="card-content">
               <div className="content">
                 <div className="field">
-                  {(!token) ? <Login /> : <Player token={token} />}
+                  {(access === false) ? <Login /> : <Player token={token} />}
+                  {/* {(!token) ? <Login /> : <Player token={token} />} */}
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function Main() {
         </div>
       </div>
       <div className="hero-foot" />
-    </>
+    </div>
   );
 }
 

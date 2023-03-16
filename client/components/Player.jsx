@@ -36,7 +36,7 @@ function Player({ token }) {
         <div className="columns">
           <Icon />
           <Zipcode />
-          <UserBox />
+          <UserBox accessToken={token}/>
         </div>
       </div>
       <iframe
