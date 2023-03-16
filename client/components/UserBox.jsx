@@ -18,13 +18,11 @@ export default function UserBox({ token }) {
   //renders a Welcome [username] message on the top right of the nav bar 
   return (
     <div className="column">
-      <div className="box is-size-4 has-text-white is-full-height">
         <p>
           Welcome {`${username}`}
           !
         </p>
-        <button type="button" className="button is-primary is-small" onClick={() => logOut()}>Log Out</button>
-      </div>
+        <button type="button" onClick={() => logOut()}>Log Out</button>
     </div>
   );
 }

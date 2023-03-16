@@ -7,10 +7,11 @@ const initialState = {
   zipcode: 10001,
   city: '',
   url: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
-  bg: "https://images.hdqwalls.com/wallpapers/sunny-fields.jpg",
+  bg: 'green',
   playlist: '',
   token: '',
   access: false,
+  entered: false,
 };
 
 const stateSlice = createSlice({
@@ -38,24 +39,12 @@ const stateSlice = createSlice({
     updateAccess: (state, action) => {
       state.access = action.payload
     },
-    updateType: (state, action) => {
-      state.type = action.payload;
+    updateEntered: (state, action) => {
+      state.entered = action.payload.value;
     },
-    updateTemp: (state, action) => {
-      state.temp = action.payload;
-    },
-    updateZipcode: (state, action) => {
-      state.zipcode = action.payload;
-    },
-    updateCity: (state, action) => {
-      state.city = action.payload;
-    },
-    updateUrl: (state, action) => {
-      state.url = action.payload;
-    }
   }
 });
 
-export const { updateType, updateTemp, updateZipcode, updateCity, updateUrl, updateAll, updateUser, updatePlaylist, updateToken, updateAccess } =
+export const { updateAll, updateUser, updatePlaylist, updateToken, updateAccess, updateEntered } =
   stateSlice.actions;
 export default stateSlice.reducer;

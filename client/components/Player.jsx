@@ -1,7 +1,5 @@
 import React from 'react';
 import UserBox from './UserBox';
-import Zipcode from './Zipcode';
-import Icon from './Icon';
 import { updatePlaylist } from '../redux/stateSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -32,12 +30,8 @@ function Player({ token }) {
   //renders embedded Spotify Player in the Main component 
   return (
     <div>
-      <div className="hero-head">
-        <div className="columns">
-          <Icon />
-          <Zipcode />
+      <div className="userContainer">
           <UserBox accessToken={token}/>
-        </div>
       </div>
       <iframe
         src={`https://open.spotify.com/embed/playlist/${playlist}?access_token=${token}&autoplay=true`}
