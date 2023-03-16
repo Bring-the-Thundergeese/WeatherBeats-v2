@@ -1,17 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: './client/index.jsx',
   // Default to development
-  mode: process.env.NODE_ENV || 'development',
+  mode: process.env.NODE_ENV,
   output: {
     // output production to /dist (change if you want)
-    path: `${__dirname}/dist`,
+    path: path.resolve(__dirname, ('./dist')),
     publicPath: '/',
-    filename: '[name].bundle.js',
+    filename: '.bundle.js',
   },
   module: {
     rules: [
@@ -21,29 +21,20 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: [
+              ['@babel/preset-env', { targets: 'defaults'}],
+              ['@babel/preset-react', {targets: 'defaults', runtime: 'automatic'}]
+            ],
           },
         },
       },
       {
-        test: /\.s(a|c)ss$/,
+        test: /\.s[ac]ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-              // options...
-            },
-          },
+          'style-loader',
+          'css-loader', 
+          'sass-loader'
         ],
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
@@ -64,32 +55,19 @@ module.exports = {
       fileName: './index.html',
       inject: true,
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css/mystyles.css',
-    }),
   ],
   devServer: {
-    // for routing
-    // historyApiFallback: true,
-    // HMR nodemon for webpack
+    headers: { 'Allow-Control-Allow-Origin': '*' },
+    historyApiFallback: true,
+    host: 'localhost',
     hot: true,
-    liveReload: true,
-    // static files
-    static: {
-      directory: path.join(__dirname, 'public'),
-      publicPath: '/',
-    },
-    compress: true,
-    // opens window when changes happen (can be annoying beware)
-    open: true,
     port: 8080,
+    static: {
+      directory: path.join(__dirname, './dist'),
+      publicPath: '/dist',
+    },
     proxy: {
-      '/auth': {
-        target: 'http://127.0.0.1:3000/',
-      },
-      '/api': {
-        target: 'http://127.0.0.1:3000/',
-      },
+      '/': 'http://localhost:3000/',
     },
   },
 };

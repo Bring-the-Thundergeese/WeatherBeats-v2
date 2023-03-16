@@ -6,7 +6,6 @@ import Login from './Login';
 
 export default function App() {
   const [token, setToken] = useState('');
-  const bg = useSelector((state) => state.updater.bg);
 
   useEffect(() => {
     async function getToken() {
@@ -19,10 +18,6 @@ export default function App() {
   }, []);
 
   return (
-    <section id="app" className="hero is-fullheight">
       <Main />
-    </section>
   );
 }
-
-// {backgroundImage: `url(${bg})`}
