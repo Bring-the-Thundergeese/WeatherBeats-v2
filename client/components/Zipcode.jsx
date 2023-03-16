@@ -38,32 +38,14 @@ export default function Zipcode() {
   //onChange tracks what is typed into the input field, saving what is typed as the useState location 
   //onClick of the button, the fetchWeatherData function is called, passing in the argument of location
   return (
-    <div className="column">
-      <div className="box is-align-content-center is-justify-content-center">
-        <div className="card-content">
-          <span />
-        </div>
-
-        <div className="field has-addons">
-          <div className="control has-icons-left has-icons-right is-expanded">
-
-            <input className="input has-text-weight-bold is-size-4" type="text" placeholder="ZIPCODE" onChange={(e) => setLocation(e.target.value)} />
-
-          </div>
-          <p className="control">
-
-            <button type="submit" className="button is-primary has-text-weight-bold is-size-4 has-text-light" onClick={() => fetchWeatherData(location)}>Location</button>
-          </p>
-        </div>
-
-        <footer className="card-footer">
-          <p className="card-footer-item has-text-weight-bold is-size-4 has-text-grey is-capitalized">{type}</p>
-          <p className="card-footer-item has-text-weight-bold is-size-4 has-text-grey has-text-centered">{city}</p>
-          <p className="card-footer-item has-text-weight-bold is-size-4 has-text-grey">{temp}</p>
-        </footer>
-
-      </div>
-
+    <div>
+      <input className="" type="text" placeholder="ZIPCODE" onChange={(e) => setLocation(e.target.value)} />
+      <button type="submit" className="" onClick={() => fetchWeatherData(location)}>Location</button>
+      <footer className="">
+        <p className="">{type}</p>
+        <p className="">{city}</p>
+        <p className="">{temp}</p>
+      </footer>
     </div>
   );
 }

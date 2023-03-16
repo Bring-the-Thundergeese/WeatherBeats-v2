@@ -31,22 +31,22 @@ function Player({ token }) {
   //renders the Logo, Zipcode toolbar, and UserInformation on the top navbar 
   //renders embedded Spotify Player in the Main component 
   return (
-    <div>
-      <div className="hero-head">
-        <div className="columns">
-          <Icon />
-          <Zipcode />
-          <UserBox />
-        </div>
+    <div className="zipcodeFeatureContainer">
+      <Icon />
+      <Zipcode />
+      <UserBox />
+      <div className='spotifyPlayer'>
+        <iframe
+          src={`https://open.spotify.com/embed/playlist/${playlist}?access_token=${token}&autoplay=true`}
+          title="Spotify Player"
+          width="100%"
+          height="380"
+          frameBorder='0'
+          allowtransparency="true"
+          allow="encrypted-media, fullscreen, picture-in-picture"
+          loading="lazy"
+        />
       </div>
-      <iframe
-        src={`https://open.spotify.com/embed/playlist/${playlist}?access_token=${token}&autoplay=true`}
-        title="Spotify Player"
-        width="300"
-        height="380"
-        allowtransparency="true"
-        allow="encrypted-media"
-      />
     </div>
   );
 }

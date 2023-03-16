@@ -18,8 +18,6 @@ export default function App() {
   }, []);
 
   return (
-    <section id="app" className="hero is-fullheight">
       <Main />
-    </section>
   );
 }

@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
@@ -21,29 +21,20 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: [
+              ['@babel/preset-env', { targets: 'defaults'}],
+              ['@babel/preset-react', {targets: 'defaults', runtime: 'automatic'}]
+            ],
           },
         },
       },
       {
-        test: /\.s(a|c)ss$/,
+        test: /\.s[ac]ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-              // options...
-            },
-          },
+          'style-loader',
+          'css-loader', 
+          'sass-loader'
         ],
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
@@ -63,9 +54,6 @@ module.exports = {
       template: path.resolve(__dirname, './public', 'index.html'),
       fileName: './index.html',
       inject: true,
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css/mystyles.css',
     }),
   ],
   devServer: {
